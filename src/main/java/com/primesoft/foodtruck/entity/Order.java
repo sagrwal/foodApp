@@ -48,9 +48,9 @@ private static final long serialVersionUID = 1L;
 	public Order() {
 		
 	}
-	public Order(String item, float quantity, String additionalIteam, float offer, String filter,
+	public Order(int id,String item, float quantity, String additionalIteam, float offer, String filter,
 			String coupon, float price) {
-		
+		this.id=id;
 		this.item = item;
 		this.quantity = quantity;
 		this.additionalIteam = additionalIteam;

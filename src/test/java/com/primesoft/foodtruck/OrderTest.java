@@ -1,30 +1,53 @@
 package com.primesoft.foodtruck;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.primesoft.foodtruck.controller.OrderController;
+import com.primesoft.foodtruck.dao.OrderDAOImpl;
 import com.primesoft.foodtruck.entity.Order;
+import com.primesoft.foodtruck.repo.OrderRepository;
 
+@ExtendWith(MockitoExtension.class)
 class OrderTest {
 	
+	 @InjectMocks
 	OrderController con=new OrderController();
 	
+	 @Mock
+    OrderDAOImpl ordDao;
+	 
+	 
+	 @Autowired
+     OrderRepository ordrepo;
+	
 
-/*	
+
 	@Test
 	public void test() {
 		OrderController orc= new OrderController();
+		List<Order> Order;
+		Order o= ordDao.getOrder(1);
+		Order= ordrepo.findAll();
 		
-		assertEquals("Rice",orc.getOrder(1).getItem());
+		
+		
+		Assert.assertEquals("Rice",o.getItem());
 		
 	}
-	*/
 	
 	
 	
+/*	
 	@Test
-	void saveOrderTest() {
+	void saveOrderTest() throws Exception{
 		
 		Order ord= new Order();
 		
@@ -47,6 +70,6 @@ class OrderTest {
 		
 	}
 
-
+*/
    
 }

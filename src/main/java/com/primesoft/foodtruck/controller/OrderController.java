@@ -3,40 +3,34 @@ package com.primesoft.foodtruck.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.primesoft.foodtruck.dao.OrderDAOImpl;
+import com.primesoft.foodtruck.dao.OrderDAO;
 import com.primesoft.foodtruck.entity.Order;
+import com.primesoft.foodtruck.service.OrderService;
 
 @RestController
 public class OrderController {
 	
-	
+	private OrderService orderService;
 
 	@Autowired
-	private OrderDAOImpl ordDao;
+    private OrderDAO ordDao;
 	
 	
 	
-	public OrderController() {
-		super();
-		
+	
+	public String addOrders(@ModelAttribute Order order) {
+		this.orderService.saveOrder(order);
+		return "home";
 	}
-
-
-
-
-	public OrderController(OrderDAOImpl ord) {
-		
-		this.ordDao = ord;
-	}
-	
-	
 	
 	
 	@GetMapping("/o")
